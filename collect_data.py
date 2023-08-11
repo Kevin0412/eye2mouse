@@ -11,10 +11,11 @@ sigma=3
 def draw_Gaussian(img,x,y,sigma):
     for x1 in range(int(x-math.sqrt(8*math.log(2))*sigma),int(x+math.sqrt(8*math.log(2))*sigma)+1):
         for y1 in range(int(y-math.sqrt(8*math.log(2))*sigma),int(y+math.sqrt(8*math.log(2))*sigma)+1):
-            if x1==x and y1 ==y:
-                img[y1][x1]==0
-            else:
-                img[y1][x1]=int(256*np.e**(-((x-x1)**2+(y-y1)**2)/2/sigma))
+            if y1>=0 and x1>=0 and y1<1010 and x1<1920:
+                if x1==x and y1 ==y:
+                    img[y1][x1]==0
+                else:
+                    img[y1][x1]=int(256*np.e**(-((x-x1)**2+(y-y1)**2)/2/sigma))
 
 def find_spot(event,x,y,flags,param):
     global draw_next,spot_x,spot_y,sigma
