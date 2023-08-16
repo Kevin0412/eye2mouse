@@ -54,7 +54,6 @@ def get_face_data(img):
     return param
 
 def draw_2d(img,param):
-    img_height, img_width, _ = img.shape
     for p in param:
         for i in range(478):
             x = int(p['keypt'][i,0])

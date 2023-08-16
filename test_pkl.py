@@ -91,6 +91,13 @@ lefts=[]
 rights=[]
 while(True):
     ret, frame = cap.read()
+    frame= cv2.copyMakeBorder(
+        frame,int((frame.shape[1]-frame.shape[0]+abs(frame.shape[1]-frame.shape[0]))/4),
+        int((frame.shape[1]-frame.shape[0]+abs(frame.shape[1]-frame.shape[0]))/4),
+        int((frame.shape[0]-frame.shape[1]+abs(frame.shape[0]-frame.shape[1]))/4),
+        int((frame.shape[0]-frame.shape[1]+abs(frame.shape[0]-frame.shape[1]))/4),
+        cv2.BORDER_CONSTANT,value=[0,0,0]
+    )
     param=get_face_data(frame)
     L,R=get_eye(net,param)
     if len(lefts)==16:
