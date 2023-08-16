@@ -9,9 +9,9 @@ def draw_Gaussian(img,x,y,sigma):
         for y1 in range(int(y-math.sqrt(8*math.log(2))*sigma),int(y+math.sqrt(8*math.log(2))*sigma)+1):
             if y1>=0 and x1>=0 and y1<1010 and x1<1920:
                 if x1==x and y1 ==y:
-                    img[y1][x1]==0
+                    img[y1][x1]==255
                 else:
-                    img[y1][x1]=int(256*np.e**(-((x-x1)**2+(y-y1)**2)/2/sigma))
+                    img[y1][x1]=max(int(256*np.e**(-((x-x1)**2+(y-y1)**2)/2/sigma)),img[y1][x1])
 
 img=np.zeros((1010,1920),np.uint8)
 
